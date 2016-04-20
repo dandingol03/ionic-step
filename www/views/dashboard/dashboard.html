@@ -1,0 +1,18 @@
+<ion-view view-title="dashboard panel">
+    <ion-content>
+        <div class="list">
+            <div class="item" ng-repeat="menu in menus" ng-if="menu.ionIcon!=''&&menu.ionIcon!=undefined"
+                 ui-sref="{{menu.authorityName=='Sport$record$upload'?'sport':'dashboard'}}" >
+
+                    <span class="icon big {{menu.ionIcon}}" ng-if="menu.enable=='0'">
+                    </span>
+                    <span class="icon big {{menu.ionIcon}} active" ng-if="menu.enable=='1'">
+                    </span>
+                    <span >
+                        {{menu.authorityDesc}}
+                    </span>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,42 @@
+<ion-view view-title="搜索帐号">
+    <ion-content>
+        <div class="list">
+            <div class="item item-input-inset">
+
+                <label class="item-input-wrapper">
+                    <input type="search" ng-model="model.term" placeholder=
+                            "Search for a location">
+                </label>
+
+                <button class="button button-small button-positive"
+                        ng-click="search()">Submit</button>
+            </div>
+
+            <div class="item" ng-repeat="result in results" on-hold="btn$press({{result.userId}})">
+                {{result.userName}}
+            </div>
+        </div>
+
+        <!--login modal-->
+        <script id="search-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <div class="bar bar-header bar-calm">
+
+                    <div class="h1 title" style="text-align:left">添加新的好友</div>
+                    <button class="button button-icon icon ion-plus-round" style="position:absolute;right:40%"
+                            ng-click="addFriend()">
+                    </button>
+                    <button class="button button-icon icon ion-minus-round" style="position:absolute;right:20%"
+                            ng-click="deleteFriend()">
+                    </button>
+                    <button class="button button-icon icon ion-chevron-down" style="position:absolute;right:0"
+                            ng-click="hideModal()">
+                    </button>
+
+                </div>
+
+
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

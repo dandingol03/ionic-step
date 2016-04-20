@@ -1,0 +1,121 @@
+<ion-view view-title="photo panel" >
+    <ion-content>
+        <div class="list card">
+
+            <div class="list">
+                <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person"></i>
+                   {{user.username}}
+                </a>
+            </div>
+            <div class="item item-body">
+                <img  ng-repeat="ite in uploadImg" class="full-image" ng-src="{{ite}}" >
+                <p>
+                    点击更改按钮，选择你要更改的头像
+                </p>
+                <p>
+                    点击上传按钮,上传你所更改的头像
+                </p>
+                <p>
+                    点击分享按钮,关注您的好友都能看到您上传头像的动态
+                </p>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="javascript:void(0)" ng-click="addAttachment()">
+                    <i class="icon ion-image"></i>
+                    更改
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    分享
+                </a>
+                <a class="tab-item" href="javascript:void(0)" ng-click="takePicture()   ">
+                    <i class="icon ion-social-instagram-outline"></i>
+                    拍照
+                </a>
+                <a class="tab-item" href="javascript:void(0)" ng-click="keepon()">
+                    <i class="icon ion-loop"></i>
+                </a>
+
+            </div>
+        </div><!-- current user list cards-->
+
+        <div class="padding">
+            <button class="button button-block button-calm" ng-click="pop$photo$config()">上传</button>
+        </div>
+
+
+        <!--此处的循环是错误的-->
+
+        <div class="list card" ng-if="keepons!=null">
+            <div ng-repeat="keepon in keepons">
+                <div class="item item-avatar">
+                    <img  ng-src="{{keepon_portraits[keepon.ownerName]}}">
+                    <h2>
+                        {{keepon.ownerName}}
+                    </h2>
+                    <p>{{keepon.date}}</p>
+                </div>
+
+                <div class="item item-body">
+                    <img class="full-image" ng-src="{{keepon_images[$index]}}">
+                    <p>
+                        {{keepon.desc}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--photo-modal-->
+        <script id="photo-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark">
+                    <h1 class="title">configure for your photo</h1>
+                    <button class="button button-clear" ng-click="hideModalInCustomization('photo modal')">
+                        Close</button>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list list-inset"  style="background-color:#444444" ng-init="photo.type='selfie'">
+                        <div class="item item-divider" style="background-color:#444444;color:#fff">
+                            select your photo type
+                        </div>
+                        <ion-radio ng-model="photo.type" ng-value="'running'">跑步</ion-radio>
+                        <ion-radio ng-model="photo.type" ng-value="'selfie'">自拍</ion-radio>
+                        <ion-radio ng-model="photo.type" ng-value="'portrait'">头像</ion-radio>
+
+                   </div>
+                    <div class="list list-inset">
+                        <div class="item item-divider" style="background-color:#444444;color:#fff">
+                            select your photo name
+                        </div>
+                        <label class="item item-input">
+                            <input type="text" placeholder="the name of the photo" ng-model="photo.name">
+                        </label>
+                    </div>
+                    <div class="list list-inset">
+                        <div class="item item-divider" style="background-color:#444444;color:#fff">
+                            add comment for photo
+                        </div>
+                        <label class="item item-input">
+                            <input type="text" placeholder="description" ng-model="photo.desc">
+                        </label>
+                        <button class="button button-block button-calm" ng-click="upload$photo('photo modal')" style="color:#fff">commit</button>
+                    </div>
+
+                </ion-content>
+
+            </ion-modal-view>
+        </script>
+        <!-- message-modal-->
+        <script id="message-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark">
+                    <h1 class="title" ng-if="websocket$message!=null">{{websocket$message}}</h1>
+                    <button class="button button-clear">
+                        Close</button>
+                </ion-header-bar>
+
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

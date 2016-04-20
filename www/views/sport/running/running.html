@@ -1,0 +1,49 @@
+<ion-view  view-title="">
+    <ion-content>
+        <div class="list">
+
+            <div class="item item-divider">跑步公里数
+                <span class="badge badge-dark">{{running.distance/running.scale}}</span>
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-ios-minus-empty"></i>
+                <input type="range" name="volume" min="0" max="16" value="0" ng-model="running.distance">
+                <i class="icon ion-ios-plus-empty"></i>
+            </div>
+
+
+            <div class="item item-divider">跑步平均速度
+                <span class="badge badge-dark">{{running.speed/running.scale}}</span>
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-ios-minus-empty"></i>
+                <input type="range" name="volume" min="10" max="24" value="10" ng-model="running.speed">
+                <i class="icon ion-ios-plus-empty"></i>
+            </div>
+
+            <div class="item item-divider">跑步时刻选定
+                <span class="badge badge-dark">{{running.date}}</span>
+            </div>
+            <div class="item range range-positive">
+                <button class="button button-full button-dark icon-left icon-bigger ion-ios-time-outline" style="border-radius: 6px"
+                         ng-click="datePick()">
+                   <span>时刻选定</span>
+                </button>
+
+           </div>
+            <div class="item item-divider">提交
+            </div>
+            <div class="item range range-positive">
+                <button class="button button-full button-royal" style="border-radius: 6px"
+                        ng-click="uploadRecord()">
+                  提交跑步记录
+                </button>
+            </div>
+
+
+
+        </div><!--list-->
+
+
+    </ion-content>
+</ion-view>

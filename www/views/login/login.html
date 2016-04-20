@@ -1,0 +1,106 @@
+<ion-view view-title="login" name="login-view" hide-back-button="true" >
+    <ion-content class="padding" my-customer="">
+        <div>
+		
+
+            <div class="card">
+                <div class="item item-image">
+                    <img src="img/github_cat.jpg" style="width:200px">
+                </div>
+            </div>
+
+            <div class="list list-inset" id="resize_div" style="background-color:#8f8f8f">
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Username" ng-model="user.username">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Password" ng-model="user.password">
+                </label>
+            </div>
+
+        </div>
+
+        <button class="button button-block button-calm" ng-click="login()">Login</button>
+        <button class="button button-block button-balanced"
+                ng-click="invokePlugin()">
+            invoke android plugin
+        </button>
+        <!--<button class="button button-block button-calm" ng-click="loginWithWebsocket('ws://192.168.0.196:8090/ReactJPChatter/websocket.ws',-->
+        <!--user.username,websocket$connect$cb,websocket$close$cb)">-->
+            <!--websocket</button>-->
+        <!--<button class="button button-block button-calm" ng-click="showModalInCustomization('message-modal.html','slide-in-left','messageModal',true)">pop message</button>-->
+
+        <!--<button class="button button-block button-calm" ng-click="invokePlugin()">plugin invoke</button>-->
+
+        <!--message modal-->
+        <script id="message-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark" >
+                    <h1 class="title">
+                        dandingol03,just post a new picture
+                    </h1>
+
+                </ion-header-bar>
+                <ion-content>
+
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <!--websocket modal-->
+        <script id="websocket-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark">
+                    <h1 class="title">websocket message panel</h1>
+                    <button class="button button-clear" ng-click="websocket$close('websocket modal')">
+                        Close</button>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list list-inset"  style="background-color:#8f8f8f" ng-init="wsMessage.region='broadcast'">
+                        <ion-radio ng-model="wsMessage.region" ng-value="'broadcast'">choose broadcast</ion-radio>
+                        <ion-radio ng-model="wsMessage.region" ng-value="'self'">choose self</ion-radio>
+                        <div class="item item-divider">
+                            message from others
+                        </div>
+                        <div class="list card" ng-repeat="msg in messages">
+                            <a href="#" class="item item-icon-left">
+                                <i class="icon ion-chatbox-working"></i>
+                                {{msg}}
+                            </a>
+
+                        </div>
+                        <div class="item item-divider">
+                            edit your message below
+                        </div>
+                        <label class="item item-input">
+                            <input type="text" placeholder="message" ng-model="wsMessage.message">
+                        </label>
+                    </div>
+                    <button class="button button-block button-balanced" style="width:95%;left:2.5%"
+                             ng-click="websocket$send()">
+                        send
+                    </button>
+                    <button class="button button-block button-balanced" style="width:95%;left:2.5%"
+                            ng-click="appendFake()">
+                        append fake msg
+                    </button>
+                </ion-content>
+
+            </ion-modal-view>
+        </script>
+
+        <!--login modal-->
+        <script id="login-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark" ng-click="hideModal()">
+                    <h1 class="title">你已经登录成功</h1>
+                    <button class="button button-clear">
+                        Close</button>
+                </ion-header-bar>
+                <ion-content ng-click="hideModal()">
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

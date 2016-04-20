@@ -1,0 +1,52 @@
+<ion-view view-title="register" name="login-view">
+    <ion-content class="padding">
+        <div>
+
+
+            <label class="center" >
+                <i><img src="img/github_cat.jpg" style="max-width:50%;max-height:50%"/></i>
+
+            </label>
+            <div class="list list-inset" style="background-color:#8f8f8f">
+
+                <label class="item item-input">
+                    <i class="icon ion-ios-personadd placeholder-icon"></i>
+                    <input type="text" placeholder="用户" ng-model="formBean.username">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-locked placeholder-icon"></i>
+                    <input type="password" placeholder="密码" ng-model="formBean.password">
+                </label>
+                <label class="item item-input">
+                    <i class="icon  placeholder-icon"></i>
+                    <input type="password" placeholder="重复密码" ng-model="formBean.rePassword">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-android-mail placeholder-icon"></i>
+                    <input type="text" placeholder="邮箱" ng-model="formBean.email">
+                </label>
+
+                <label class="item item-input">
+                    <i class="icon ion-android-call placeholder-icon"></i>
+                    <input type="text" placeholder="电话" ng-model="formBean.phone">
+                </label>
+            </div>
+
+        </div>
+
+        <button class="button button-block button-calm" ng-click="register()">Register</button>
+
+        <!--login modal-->
+        <script id="login-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-dark" ng-click="hideModal()">
+                    <h1 class="title">你已经登录成功</h1>
+                    <button class="button button-clear">
+                        Close</button>
+                </ion-header-bar>
+                <ion-content ng-click="hideModal()">
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>
